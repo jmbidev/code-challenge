@@ -61,7 +61,7 @@ const AddDriverForm = ({ addDriver }) => {
   return (
     <>
       <br />
-      <h2 className='text-center'>Add a new driver</h2>
+      <h2 className='text-center'>Formulario para añadir a un conductor</h2>
       <br />
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className='justify-content-md-center'>
