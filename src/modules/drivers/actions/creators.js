@@ -19,9 +19,7 @@ export const addDriver = (driver) => (dispatch) => {
       dispatch(setMessage('El conductor no ha podido ser agregado correctamente', `Error de comunicacion con la api rest, status: ${error.response.status}`, 'danger'))
       return false
     }
-  ).then((driverAdded) => {
-    return driverAdded
-  })
+  )
 }
 
 export const driverAdded = (driver, id) => ({
@@ -55,9 +53,9 @@ export const driverRemoved = (id) => ({
 
 export const loadDrivers = () => {
   return (dispatch, getState) => {
-    const { driversLoaded } = getState().drivers
+    const { isDriversListLoaded } = getState().drivers
 
-    if (driversLoaded) {
+    if (isDriversListLoaded) {
       return Promise.resolve(true)
     }
 

@@ -9,21 +9,21 @@ import LoadingSpinner from '../../../../components/LoadingSpinner'
 
 const ShowDrivers = ({ drivers, loadDrivers }) => {
   const history = useHistory()
-  const [fetchingDrivers, setFetchingDrivers] = useState(false)
+  const [isDriversListBeingLoaded, setIsDriversListBeingLoaded] = useState(false)
 
   const finishLoading = useCallback(
-    (loaded) => {
-      setFetchingDrivers(false)
+    () => {
+      setIsDriversListBeingLoaded(false)
     },
-    [setFetchingDrivers]
+    [setIsDriversListBeingLoaded]
   )
 
   useEffect(
     () => {
-      setFetchingDrivers(true)
+      setIsDriversListBeingLoaded(true)
       loadDrivers().then(finishLoading)
     },
-    [loadDrivers, setFetchingDrivers, finishLoading]
+    [loadDrivers, setIsDriversListBeingLoaded, finishLoading]
   )
 
   const navigateToAddDriverScreen = useCallback(
@@ -37,7 +37,7 @@ const ShowDrivers = ({ drivers, loadDrivers }) => {
 
   return (
     <>
-      {fetchingDrivers && <LoadingSpinner />}
+      {isDriversListBeingLoaded && <LoadingSpinner />}
       {thereAreDrivers && <DriversTable drivers={drivers} />}
       {!thereAreDrivers && <NoDrivers />}
       <Button variant='primary' onClick={navigateToAddDriverScreen}>Añadir conductor</Button>
