@@ -34,7 +34,7 @@ const DriversTableRow = ({ index, driver, deleteDriver }) => {
         {driver.carLicensePlate}
       </td>
       <td>
-        <Button variant='danger' onClick={onDelete}>Delete</Button>
+        <Button variant='danger' onClick={onDelete}>Eliminar</Button>
         {deleting && <LoadingSpinner />}
       </td>
     </tr>
