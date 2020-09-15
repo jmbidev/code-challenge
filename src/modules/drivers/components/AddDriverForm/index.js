@@ -43,12 +43,14 @@ const AddDriverForm = ({ addDriver }) => {
       event.preventDefault()
       event.stopPropagation()
 
-      if (form.checkValidity() === false) {
+      const isFormDataValid = form.checkValidity() === false
+
+      if (isFormDataValid) {
         setValidated(true)
       } else {
         setUploading(true)
-        addDriver(buildPayload()).then((driverAdded) => {
-          if (driverAdded) {
+        addDriver(buildPayload()).then((isDriverSuccessfullyAdded) => {
+          if (isDriverSuccessfullyAdded) {
             clearInputs()
           }
           setUploading(false)

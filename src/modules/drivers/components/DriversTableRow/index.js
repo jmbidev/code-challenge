@@ -5,18 +5,18 @@ import PropTypes from 'prop-types'
 import LoadingSpinner from '../../../../components/LoadingSpinner'
 
 const DriversTableRow = ({ index, driver, deleteDriver }) => {
-  const [deleting, setDeleting] = useState(false)
+  const [isDriverBeingDeleted, setIsDriverBeingDeleted] = useState(false)
 
   const onDelete = useCallback(
     () => {
-      setDeleting(true)
-      deleteDriver(driver.id).then((deleted) => {
-        if (!deleted) {
-          setDeleting(false)
+      setIsDriverBeingDeleted(true)
+      deleteDriver(driver.id).then((isDriverSuccessfullyDeleted) => {
+        if (!isDriverSuccessfullyDeleted) {
+          setIsDriverBeingDeleted(false)
         }
       })
     },
-    [driver, setDeleting, deleteDriver]
+    [driver, setIsDriverBeingDeleted, deleteDriver]
   )
 
   return (
@@ -35,7 +35,7 @@ const DriversTableRow = ({ index, driver, deleteDriver }) => {
       </td>
       <td>
         <Button variant='danger' onClick={onDelete}>Eliminar</Button>
-        {deleting && <LoadingSpinner />}
+        {isDriverBeingDeleted && <LoadingSpinner />}
       </td>
     </tr>
   )

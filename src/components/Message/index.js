@@ -3,7 +3,9 @@ import { Alert } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
 const Message = ({ message, close }) => {
-  if (message) {
+  const isMessageAvailable = !!message
+
+  if (isMessageAvailable) {
     const { title, body, variant } = message
     return (
       <div>
